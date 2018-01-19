@@ -38,37 +38,37 @@
 
 Migration Scenario
 1. Adding a new class <br>
-..a. Add a new class in the Project <br>
+    a. Add a new class in the Project <br>
     b. make it public <br>
     c. Add a DbSet of this class (If not added, the migration class will be empty) <br>
     d. `add-migration AddCategoriesTable` <br>
         If AddCategoriesTable migration already exists,  <br>
         `add-migration AddCategoriesTable -Force` <br>
     e. update-database <br>
-2. Modifying an existing class 
-...Scenario
-......a. Adding a new property
-......b. Modifying an existing property
-.........Rename a column is tricky. Generated migration drop the existing column and add a new column.
-.........We could use RenameColumn() or Sql() to fix this. See RenameTitleToNameInCourseTable migration.
-.........c. Deleting an existing property
-3. Deleting an exising class
-......a. Remove all foriegn key for this class (migration and update db)
-......b. Delete the class and remove it from DebSet (migration and update db)
-......c. If you want to keep the data from deleting table then create a new table, copy data from deleting table to new table, then delete the table.
+2. Modifying an existing class <br>
+    Scenario <br>
+        a. Adding a new property <br>
+        b. Modifying an existing property <br>
+        Rename a column is tricky. Generated migration drop the existing column and add a new column. <br>
+        We could use RenameColumn() or Sql() to fix this. See RenameTitleToNameInCourseTable migration. <br>
+        c. Deleting an existing property <br>
+3. Deleting an exising class <br>
+        a. Remove all foriegn key for this class (migration and update db) <br>
+        b. Delete the class and remove it from DebSet (migration and update db) <br>
+        c. If you want to keep the data from deleting table then create a new table, copy data from deleting table to new table, then delete the table. <br>
 
 ### Migration Downgrading a db
-...`Update-Database -TargetMigration:DeleteDatePublishColumnFromCourseTable`
-...This command revert migrations to the target migration using the Down() in Migration class.
+`Update-Database -TargetMigration:DeleteDatePublishColumnFromCourseTable` <br>
+This command revert migrations to the target migration using the Down() in Migration class. <br>
 
 ### Seeding the database
-...if you want to seeding your database use empty Migration or use Seed() in Configuration.cs
-...Everytime we use update-database, Seed() will run.
+if you want to seeding your database use empty Migration or use Seed() in Configuration.cs <br>
+Everytime we use update-database, Seed() will run.<br>
 
 ### Deployment
-...1. `Update-Database -Script -SourceMigration:0`
-......It will create all migration script
-...2. `Update-­Database ­‐Script ­‐SourceMigration:Migr1 ­‐TargetMigration:Migr2`
+1. `Update-Database -Script -SourceMigration:0` <br>
+It will create all migration script <br>
+2. `Update-­Database ­‐Script ­‐SourceMigration:Migr1 ­‐TargetMigration:Migr2`
 
 
 
