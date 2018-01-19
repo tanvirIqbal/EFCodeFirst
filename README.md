@@ -37,14 +37,14 @@
 2. Database Centric - add-migration AddCategoriesTable
 
 Migration Scenario
-1. Adding a new class 
-    a. Add a new class in the Project 
-    b. make it public 
-    c. Add a DbSet of this class (If not added, the migration class will be empty) 
-    d. `add-migration AddCategoriesTable` 
-        If AddCategoriesTable migration already exists,  
-        `add-migration AddCategoriesTable -Force` 
-    e. update-database 
+1. Adding a new class <br>
+..a. Add a new class in the Project <br>
+    b. make it public <br>
+    c. Add a DbSet of this class (If not added, the migration class will be empty) <br>
+    d. `add-migration AddCategoriesTable` <br>
+        If AddCategoriesTable migration already exists,  <br>
+        `add-migration AddCategoriesTable -Force` <br>
+    e. update-database <br>
 2. Modifying an existing class 
 ...Scenario
 ......a. Adding a new property
